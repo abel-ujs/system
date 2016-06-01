@@ -8,9 +8,7 @@
 		<artifactId>system-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>cong.lhong</groupId>
 	<artifactId>system-web</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>system-web</name>
 	<url>http://maven.apache.org</url>
@@ -40,6 +38,10 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+			</dependency>
 	</dependencies>
 	<build>
 		<finalName>system-web</finalName>
