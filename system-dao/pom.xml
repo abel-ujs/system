@@ -4,10 +4,9 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>cong.lhong</groupId>
+		<groupId>com.lhong</groupId>
 		<artifactId>system-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../system-parent/pom.xml</relativePath>
 	</parent>
 	<artifactId>system-dao</artifactId>
 	<name>system-dao</name>
@@ -17,14 +16,52 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
+			<groupId>com.lhong</groupId>
+			<artifactId>system-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+			</dependency>
+		
+		<dependency>
+		<groupId>org.mybatis</groupId>
+    <artifactId>mybatis</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.mybatis</groupId>
+    <artifactId>mybatis-spring</artifactId>
+</dependency>
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-jdbc</artifactId>
+</dependency>
+  	<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
 		</dependency>
+    
+  
+    <dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				
+			</dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+			</dependency>
+    <dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>druid</artifactId>
+</dependency>
 	</dependencies>
 	<build>
 		<plugins>

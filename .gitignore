@@ -1,6 +1,11 @@
 ## .gitignore for Grails 1.2 and 1.3
 
-# .gitignore for maven 
+# .gitignore for maven
+system-common/target/
+system-core/target/
+system-dao/target/
+system-parent/target/
+system-web/target/ 
 target/
 *.releaseBackup
 
