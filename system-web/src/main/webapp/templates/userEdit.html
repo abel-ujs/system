@@ -1,0 +1,82 @@
+<div class="modal-header">
+	<h4 class="modal-title">{{operate=='1'? '编辑':'添加'}}用户</h4>
+</div>
+<div class="modal-body">
+ 	<div class="container">
+ 		<form class="form-horizontal" role="form" name="computerForm">
+  			<div class="form-group">
+  			  <label for="name" class="col-sm-2 control-label">用户名</label>
+  			  <div class="col-sm-3">
+  			    <input type="text" class="form-control" id="name" name="name" data-ng-model="user.name"  placeholder="输入用户名" maxlength=10 required>
+  			  </div>
+  			</div>
+        <div class="form-group" data-ng-show="computerForm.name.$invalid&&computerForm.name.$dirty">
+                <div class="col-sm-3 col-sm-offset-2">
+                    <label class="error">格式不正确</label>
+                </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="col-sm-2 control-label">密码</label>
+          <div class="col-sm-3">
+            <input type="password" class="form-control" id="password" name="password" data-ng-model="user.password"  placeholder="输入密码" maxlength=50 required >
+          </div>
+        </div>
+         <div class="form-group" data-ng-show="computerForm.password.$invalid&&computerForm.password.$dirty">
+                <div class="col-sm-3 col-sm-offset-2">
+                    <label class="error">格式不正确</label>
+                </div>
+            </div>
+  		</form>	
+ 	</div>
+</div>
+<div class="modal-footer">
+	<button class="btn " type="button" ng-click="ok()" data-ng-disabled="(computerForm.$dirty&&computerForm.$invalid)||computerForm.$pristine">保存</button>
+	<button class="btn " type="button" ng-click="cancel()">取消</button>
+</div>
+<style type="text/css">
+	.modal{
+		margin-top:100px;
+	}
+	.modal-header{
+		text-align: center;
+		background-color:#2B2C30;
+		color:#fff;
+    border-bottom: 1px solid #4d4e52;
+	}
+  .modal-body{
+    background-color: #333439;
+  }
+  .modal-body input{
+    color:#ccc;
+    background-color:#333439;
+    border: 1px solid #4d4e52;
+  }
+	.modal-footer{
+		text-align: center;
+	}	
+	.modal-footer{
+		background-color:#2B2C30;
+    border-top: 1px solid #4d4e52;
+	}
+  .modal-footer button{
+        background-color:#2B2C30;
+        border: 1px solid #4e595f;
+        text-decoration: none;
+        padding:5px 10px 5px 10px;
+        border-radius: 5px 5px;
+        cursor: pointer;
+        margin-right:10px;
+        color:#ccc;
+        transition: all .15s ease-in 0s;
+    }
+    .modal-footer button:hover{
+        background-color: #6cb670;
+    }
+    .modal-footer button:focus{
+      background-color:#2B2C30;
+       color:#ccc;
+    }
+	.modal-body{
+		padding-top: 30px
+	}
+</style>

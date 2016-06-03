@@ -1,8 +1,6 @@
 package org.system.dao;
 
-import java.util.List;
 import org.system.entity.Computer;
-import org.system.entity.ComputerExample;
 
 public interface ComputerMapper {
     int deleteByPrimaryKey(Integer id);
@@ -10,8 +8,6 @@ public interface ComputerMapper {
     int insert(Computer record);
 
     int insertSelective(Computer record);
-
-    List<Computer> selectByExample(ComputerExample example);
 
     Computer selectByPrimaryKey(Integer id);
 

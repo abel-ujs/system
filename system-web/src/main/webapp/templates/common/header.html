@@ -1,0 +1,73 @@
+<div class="header">
+	<div class="container">
+		<div class="link-name">
+			<i class="glyphicon glyphicon-globe"></i>
+			<span >匿名链路后台管理系统</span>
+		</div>
+		<div class="pull-right">
+			<ul class="menu">
+				<li class="loginInfo" data-ng-click="$parent.$parent.changePassword()">欢迎<br>{{$parent.logUser.name}}</li>
+				<li data-ng-class="{active:($parent.nav.getCurrent()=='home')}" ><a href="#/home" data-ng-click="$parent.nav.setCurrent('home')"><i class="glyphicon glyphicon-th" ></i><br>首页</a></li>
+				<li data-ng-class="{active:($parent.nav.getCurrent()=='computer')}" ><a href="#/computer" data-ng-click="$parent.nav.setCurrent('computer')"><i class="glyphicon glyphicon-home"></i><br>机器管理</a></li>
+				<li data-ng-class="{active:($parent.nav.getCurrent()=='linkroute')}" ><a href="#/linkroute" data-ng-click="$parent.nav.setCurrent('linkroute')"><i class="glyphicon glyphicon-link"></i><br>链路管理</a></li>
+				<li data-ng-class="{active:($parent.nav.getCurrent()=='user')}" has-permission="admin" ><a href="#/user" data-ng-click="$parent.nav.setCurrent('user')"><i class="glyphicon glyphicon-user"></i><br>用户管理</a></li>
+				<li  ><a href="" data-ng-click="logOff()"><i class="glyphicon glyphicon-log-out"></i><br>退出</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<style type="text/css">
+	.header{
+		width:100%;
+		background-color: #2B2C30;
+		color:#fff;
+		font-weight: 600;
+	}
+	.link-name{
+		display: inline-block;
+		padding-top:15px;
+		padding-bottom: 15px;
+		font-size: 20px;
+		color: #6CB670;
+	}
+	.header .menu{
+		font-size:14px;
+		font-weight: 500;
+		list-style: none;
+		text-align: center
+	}
+	.header .menu li{
+		width:100px;
+		padding:10px 20px 10px 20px;
+		float:left;
+		border-left: 1px solid #4d4e52;
+		border-right: 1px solid #4d4e52;
+		
+	}
+	.header .menu li a{
+		color:#fff;
+	}
+	.header .menu li.active a{
+		color:#6CB670;
+	}
+	.header .menu li a:hover{
+		text-decoration: none;
+	}
+	.header .menu li a:focus{
+		text-decoration: none;
+	}
+	.header .menu li a:visited{
+		text-decoration: none;
+	}
+	.header .menu li.active{
+		background-color:#333439;
+	}
+	
+	.header .menu li i{
+		font-size: 20px
+	}
+	.header .loginInfo{
+		color:#999;
+	}
+
+</style>

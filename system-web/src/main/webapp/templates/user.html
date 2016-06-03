@@ -1,0 +1,143 @@
+<div data-ng-include="'./templates/common/header.html'"></div>
+<div class="container ">
+	<div class="position">当前位置>用户管理</div>
+	<div class="box">
+		<div class="toolbar">
+			
+			<input data-ng-model="key" placeholder="请输入关键词" ng-trim="false">
+			<a class="" data-ng-click="refresh()">搜索</a>
+			<a class=" reset" data-ng-click="key=''">重置</a>
+			<a class="major pull-right" data-ng-click="open()">添加</a>
+			
+		</div>
+		<div class="list">
+			<table class="table">
+				<thead>
+					<tr>
+						<th width="5%">ID</th>
+						<th width="20%">用户名</th>
+						<th width="15%">角色</th>
+						<th width="15%">操作</th>
+					</th>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat="u in users.data track by $index">
+						<td>{{$index+1}}</td>
+						<td>{{u.name}}</td>
+						<td>{{u.admin==1 ? "管理员":"用户"}}</td>
+						<td>
+							<a href="" data-ng-click="open(u.id)"><i class="glyphicon glyphicon-edit"></i></a>
+							<a href="" data-ng-click="deleteUser(u.id)"><i class="glyphicon glyphicon-remove-sign"></i></a>
+							<!-- <a href="" data-ng-click="open(u.id)"><i class="glyphicon glyphicon-play"></i></a> -->
+						</td>
+					</tr>
+					<tr data-ng-if="users.data.length==0">
+						<td colspan="7">没有了</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="page-content">
+			<uib-pagination total-items="users.page.total" data-ng-change="pageChanged()" ng-model="users.page.current" items-per-page="users.page.size" class="pagination-sm" boundary-link-numbers="true" previous-text="上一页" next-text="下一页"></uib-pagination>
+		</div>
+	</div>
+</div>
+<div data-ng-include="'./templates/common/footer.html'"></div>
+<style type="text/css">
+	.container .breadcrumb{
+		padding-left:40px;
+	}
+	.box .toolbar{
+		padding:20px 60px 20px 20px;
+		background-color:  #2B2C30;
+		/*box-shadow: 0px 0px 2px 1px #bbb;*/
+		
+	}
+	.box .toolbar input{
+		padding:15px;
+		border:1px solid #4d4e52;
+		background-color: #2B2C30;
+		transition: border-color ease-in-out .15s;
+		height:41px;
+		width:300px;
+		margin-right:10px;
+	}
+	.box .toolbar input:hover,
+	.box .toolbar input:active,
+	.box .toolbar input:focus{
+		border-color: #6CB670
+	}
+	.box .toolbar a{
+		border: 1px solid #4e595f;
+		text-decoration: none;
+		/*background-color: #3f92d2;*/
+		padding:10px 20px 10px 20px;
+		cursor: pointer;
+		margin-right:10px;
+		color:#ccc;
+		transition: all .15s ease-in 0s;
+	}
+	.box .toolbar a:hover{
+		background-color: #6cb670;
+	}
+	
+	.container .position{
+		padding-top:20px;
+		padding-bottom:20px;
+	}
+	.box .list{
+		margin-top:20px;
+		/*box-shadow: 0px 0px 2px 1px #bbb;*/
+	}
+	.box .list td{
+		border-top:1px solid #4d4e52;
+	}
+	
+	.box table{
+		text-align: center;
+	}
+	.box th{
+		text-align: center;
+	}
+	.box .list table a{
+		margin-right: 10px;
+		margin-left:10px;
+		color:#6CB670;
+	}
+	.box i:last-child{
+		
+	}
+	.box thead tr{
+		background-color: #2B2C30;
+	/*	color:#fff;
+		border-top: 1px solid  #2B2C30;
+		border-left: 1px solid  #2B2C30;
+		border-right: 1px solid  #2B2C30;*/
+	}
+	.box tbody tr{
+		background-color:#2B2C30;
+	}
+	.table>thead>tr>th{
+		    border-bottom: 2px solid #4d4e52;
+	}
+
+	.page-content{
+		text-align: center;
+	}
+	i{
+		font-size: 20px;
+	}
+	.pagination>.disabled>a, .pagination>.disabled>a:hover, .pagination>.disabled>a:focus, .pagination>li>a, .pagination>li>span{
+		background-color: #2B2C30;
+		border-color:#4d4e52;
+	}
+	.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus{
+		background-color: #6CB670;
+    	border-color: #6CB670;
+	}
+	.pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus, .pagination>li>span:focus{
+		background-color: #6CB670;
+    	border-color: #6CB670;
+	}
+
+</style>

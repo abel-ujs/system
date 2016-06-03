@@ -7,6 +7,7 @@
 		<groupId>com.lhong</groupId>
 		<artifactId>system-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../system-parent/pom.xml</relativePath>
 	</parent>
 	<artifactId>system-dao</artifactId>
 	<name>system-dao</name>

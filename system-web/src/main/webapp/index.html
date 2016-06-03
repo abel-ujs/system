@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<base></base>
+	<meta charset="UTF-8">
+	<title>匿名链路后台管理</title>
+	<link rel="stylesheet" type="text/css" href="libs/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="libs/angular-loading/loading-bar.css">
+	<style type="text/css">
+		body{
+			font-family: 微软雅黑;
+			font-size: 14px;
+			color:#ccc;
+			min-width: 750px;
+			background-color: #333439;
+		}
+		a:focus{
+			outline: none;
+		}
+		input.ng-valid.ng-dirty{
+			border:solid green 2px;
+		}
+		input.ng-invalid.ng-dirty{
+			border:solid red 2px;
+		}
+		.error{
+			color:red;
+		}
+		.box .toolbar a{
+			border-radius: 2px;
+		}
+	}
+	</style>
+
+</head>
+<body >
+<div data-ng-controller="mainCtl">
+	<div data-ng-view></div>
+</div>
+
+
+<script src="http://api.map.baidu.com/api?v=2.0&ak=WfvOBsF41FGCO4SpNsc2xoF7hdokGIMz"></script>
+<script type="text/javascript" src="libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="libs/angular/angular.js"></script>
+<script type="text/javascript" src="libs/angular/angular-route.js"></script>
+<script type="text/javascript" src="libs/angular/angular-resource.js"></script>
+<script type="text/javascript" src="libs/angular/angular-animate.js"></script>
+<script type="text/javascript" src="libs/angular-loading/loading-bar.min.js"></script>
+<script type="text/javascript" src="libs/angular-ui/ui-bootstrap-tpls-1.1.1.min.js"></script>
+<script type="text/javascript" src="app/permission.js"></script>
+<script type="text/javascript" src="app/services.js"></script>
+<script type="text/javascript" src="app/controllers.js"></script>
+<script type="text/javascript" src="app/app.js"></script>
+<script type="text/javascript">
+</script>
+
+</body>
+</html>
