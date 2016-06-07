@@ -6,6 +6,7 @@ system-core/target/
 system-dao/target/
 system-parent/target/
 system-web/target/ 
+system-system-utils/target/ 
 target/
 *.releaseBackup
 

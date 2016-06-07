@@ -125,4 +125,7 @@
       lat = #{lat,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap" >
+  	select * from computer limit #{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}
+  </select>
 </mapper>

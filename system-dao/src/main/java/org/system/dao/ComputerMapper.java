@@ -1,5 +1,8 @@
 package org.system.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 import org.system.entity.Computer;
 
 public interface ComputerMapper {
@@ -14,4 +17,6 @@ public interface ComputerMapper {
     int updateByPrimaryKeySelective(Computer record);
 
     int updateByPrimaryKey(Computer record);
+    
+    List<Computer> selectAll(@Param("start") Integer start,@Param("size") Integer size);
 }

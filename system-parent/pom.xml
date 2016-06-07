@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.lhong</groupId>
 	<artifactId>system-parent</artifactId>
@@ -23,7 +22,8 @@
 		<module>../system-dao</module>
 		<module>../system-core</module>
 		<module>../system-web</module>
-	</modules>
+    	<module>../system-utils</module>
+  </modules>
 	<properties>
 		<spring.version>4.2.6.RELEASE</spring.version>
 		<junit.version>4.12</junit.version>
@@ -34,9 +34,60 @@
 		<mybatis.version>3.4.0</mybatis.version>
 		<druid.version>1.0.13</druid.version>
 		<jackson.version>2.7.4</jackson.version>
+		<commons.codec.version>1.10</commons.codec.version>
+		<http.version>4.5.2</http.version>
+		<log4j.version>1.2.17</log4j.version>
+		<dom4j.version>1.6.1</dom4j.version>
+		<jsoup.version>1.9.2</jsoup.version>
+		<common.io.version>2.5</common.io.version>
+		<servlet.version>3.1.0</servlet.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
+		<!-- http://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>${servlet.version}</version>
+</dependency>
+		
+		<!-- http://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>${http.version}</version>
+</dependency>
+		<!-- http://mvnrepository.com/artifact/log4j/log4j -->
+<dependency>
+    <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>
+    <version>${log4j.version}</version>
+</dependency>
+		<!-- http://mvnrepository.com/artifact/dom4j/dom4j -->
+<dependency>
+    <groupId>dom4j</groupId>
+    <artifactId>dom4j</artifactId>
+    <version>${dom4j.version}</version>
+</dependency>
+		<!-- http://mvnrepository.com/artifact/org.jsoup/jsoup -->
+<dependency>
+    <groupId>org.jsoup</groupId>
+    <artifactId>jsoup</artifactId>
+    <version>${jsoup.version}</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/commons-io/commons-io -->
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>${common.io.version}</version>
+</dependency>
+
+		
+		<dependency>
+    <groupId>commons-codec</groupId>
+    <artifactId>commons-codec</artifactId>
+    <version>${commons.codec.version}</version>
+</dependency>
 		<!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
 <dependency>
     <groupId>com.fasterxml.jackson.core</groupId>
