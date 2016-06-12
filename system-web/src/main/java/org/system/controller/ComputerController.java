@@ -5,28 +5,39 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.system.core.ComputerService;
+import org.system.entity.Computer;
+import org.system.utils.Page;
+import org.system.utils.Response;
 
 @Controller
 public class ComputerController {
 	
-	@RequestMapping("/api/test.do")
+	@Autowired
+	private ComputerService computerService;
+	
+	@RequestMapping("/computer/getAll.do")
 	@ResponseBody
-	public Map<String,String> test(){
-		HashMap<String,String> hashMap = new HashMap<String, String>();
-		hashMap.put("data", "test");
-		hashMap.put("code", "202");
-		return hashMap;
+	public Response<Computer> getAll(String current,String size){
+		Page page = new Page(current,size);
+		int total = computerService.getTotal();
+		page.setTotal(String.valueOf(total));
+		List<Computer> computers = computerService.getComputer(current, size);
+		Response<Computer> response = new Response<Computer>();
+		response.setResult(computers);
+		response.setPage(page);
+		return response;
 	}
-	@RequestMapping("/user/getPermission.do")
+	@RequestMapping("/computer/test.do")
 	@ResponseBody
-	public List<String> getPermission(){
-		List<String> arrayList = new ArrayList<String>();
-		arrayList.add("login");
-		arrayList.add("admin");
-		return arrayList;
+	public Response<Object> test(String current,String size){
+		Response<Object> response = new Response<Object>();
+		return response;
 	}
+	
 
 }

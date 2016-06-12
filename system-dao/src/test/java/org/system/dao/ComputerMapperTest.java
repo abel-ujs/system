@@ -27,5 +27,11 @@ public class ComputerMapperTest {
 		List<Computer> selectAll = computerMapper.selectAll(0, 11);
 		assertNotNull(selectAll);
 	}
+	@Test
+	public void testTotal(){
+		int total = computerMapper.total();
+		System.out.println(total);
+		assertTrue(total>0);
+	}
 
 }

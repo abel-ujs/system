@@ -128,4 +128,7 @@
   <select id="selectAll" resultMap="BaseResultMap" >
   	select * from computer limit #{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}
   </select>
+  <select id="total" resultType="java.lang.Integer">
+  	select count(*) from computer
+  </select>
 </mapper>

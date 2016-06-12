@@ -2,6 +2,8 @@ package org.system.core;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +17,16 @@ public class ComputerServiceTest {
 
 	@Autowired
 	private ComputerService computerService;
+	
 	@Test
-
 	public void test() {
-		Computer user = computerService.getComputer();
-		assertTrue(user.getId()==32);
+		Computer computer = computerService.getComputer();
+		assertTrue(computer.getId()==32);
+	}
+	@Test
+	public void testSelectPage(){
+		List<Computer> computers = computerService.getComputer("1", "2");
+		assertTrue(computers.size()==2);
 	}
 
 }

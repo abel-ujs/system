@@ -1,4 +1,4 @@
-package com.fh.utils;
+package org.system.utils;
 
 
 import java.io.BufferedReader;
@@ -26,7 +26,7 @@ import javax.crypto.NoSuchPaddingException;
 
 import org.apache.commons.codec.binary.Base64;
 
-public class RSAEncryptUtil {
+public class RSAEncrypt {
 	
 	/**
 	 * 随机生成密钥对
@@ -239,25 +239,8 @@ public class RSAEncryptUtil {
 			// 使用默认RSA
 			cipher = Cipher.getInstance("RSA");
 			cipher.init(Cipher.ENCRYPT_MODE, privateKey);
-			int inputLen = plainTextData.length;
-	        ByteArrayOutputStream out = new ByteArrayOutputStream();
-	        int offSet = 0;
-	        byte[] cache;
-	        int i = 0;
-	        // 对数据分段加密
-	        while (inputLen - offSet > 0) {
-	            if (inputLen - offSet > 117) {
-	                cache = cipher.doFinal(plainTextData, offSet, 117);
-	            } else {
-	                cache = cipher.doFinal(plainTextData, offSet, inputLen - offSet);
-	            }
-	            out.write(cache, 0, cache.length);
-	            i++;
-	            offSet = i * 117;
-	        }
-	        byte[] encryptedData = out.toByteArray();
-	        out.close();
-			return encryptedData;
+			byte[] output = cipher.doFinal(plainTextData);
+			return output;
 		} catch (NoSuchAlgorithmException e) {
 			throw new Exception("无此加密算法");
 		} catch (NoSuchPaddingException e) {
@@ -349,25 +332,8 @@ public class RSAEncryptUtil {
 			cipher = Cipher.getInstance("RSA");
 			// cipher= Cipher.getInstance("RSA", new BouncyCastleProvider());
 			cipher.init(Cipher.DECRYPT_MODE, publicKey);
-			int inputLen = cipherData.length;
-	        ByteArrayOutputStream out = new ByteArrayOutputStream();
-	        int offSet = 0;
-	        byte[] cache;
-	        int i = 0;
-	        // 对数据分段解密
-	        while (inputLen - offSet > 0) {
-	            if (inputLen - offSet > 128) {
-	                cache = cipher.doFinal(cipherData, offSet, 128);
-	            } else {
-	                cache = cipher.doFinal(cipherData, offSet, inputLen - offSet);
-	            }
-	            out.write(cache, 0, cache.length);
-	            i++;
-	            offSet = i * 128;
-	        }
-	        byte[] decryptedData = out.toByteArray();
-	        out.close();
-			return decryptedData;
+			byte[] output = cipher.doFinal(cipherData);
+			return output;
 		} catch (NoSuchAlgorithmException e) {
 			throw new Exception("无此解密算法");
 		} catch (NoSuchPaddingException e) {
@@ -383,7 +349,7 @@ public class RSAEncryptUtil {
 	}
 
 	public static String convert(String filepath ,String plaintext) throws Exception{
-		byte[] cipherData=RSAEncryptUtil.encrypt(RSAEncryptUtil.loadPrivateKeyByStr(RSAEncryptUtil.loadPrivateKeyByFile(filepath)),plaintext.getBytes());
+		byte[] cipherData=RSAEncrypt.encrypt(RSAEncrypt.loadPublicKeyByStr(RSAEncrypt.loadPublicKeyByFile(filepath)),plaintext.getBytes());
 		String cipher=Base64.encodeBase64String(cipherData);
 		return cipher;
 	}
@@ -394,30 +360,31 @@ public class RSAEncryptUtil {
 		
 		
 		System.out.println("--------------公钥加密私钥解密过程-------------------");
-		String plainText="hello";
+		String plainText="ihep_公钥加密私钥解密";
 		//公钥加密过程
-		byte[] cipherData=RSAEncryptUtil.encrypt(RSAEncryptUtil.loadPublicKeyByStr(RSAEncryptUtil.loadPublicKeyByFile(filepath)),plainText.getBytes());
+		byte[] cipherData=RSAEncrypt.encrypt(RSAEncrypt.loadPublicKeyByStr(RSAEncrypt.loadPublicKeyByFile(filepath)),plainText.getBytes());
 		String cipher=Base64.encodeBase64String(cipherData);
+		String cipher2 = "VhFzJk8FPgfueliDhDuT/IOi9a+TOzyX89Kb6SXGHMYa08C+CDqFkLqbtD9Tstg/VEBgWMxEbQvB78le4nmok9SL8O+0Y5shzbMJX7nvTBgPIepxUymnsVYWTQj2i3UtDi4zxgwW+/pK/NjO9j0xkyemAfm3vnFgzkA9UF2mtNKH8omKKLDUWtgfsU37+08CH9n7C1U9dz2xETLms8Fx7K646ZdgGrPv8IO3butz9TvXG9XDa7JMr1flHU41PTt+qhL3VnxzS6qeZoTViyQ6VNVSN+/q9pe+j5e5vjXnKaBNzdmAC3WRHNKpr7B9V8ZzA+xhdGPVsRTFajyx7x/Ug4pMYCjyNNTpgEPLJs1dgmmohKqO0+62y1A0KFDzr7E0wVunHxlR9LtbjBr3q6nDX2++Yfq8VV63IQT539Zng44JQxFacJikZEwYLB5b4B9mtyELA9j6RzBu+JHvUQvcUGwHpEaKkvfs5cxWipETjlBvtG7VPaZXXdonu76a0uCqF6202q39V2U2YEKilc+fIbhMkRSfA5VKAikqcLsLH6BWEh/vV4bH/Gv7mmqSxKJ7B4hpPwGakPn2yenAgljfqBlb7eSMd9xW4Gr7khhTIKkxVoAMaNQIcNZq7UMCvrrqEITu0kyiwG3btsHTOBJDz56S4nA2/XrHhxTvUkCsaNw=";
 		//私钥解密过程
-		byte[] res=RSAEncryptUtil.decrypt(RSAEncryptUtil.loadPrivateKeyByStr(RSAEncryptUtil.loadPrivateKeyByFile(filepath)), Base64.decodeBase64(cipher));
+		byte[] res=RSAEncrypt.decrypt(RSAEncrypt.loadPrivateKeyByStr(RSAEncrypt.loadPrivateKeyByFile(filepath)), Base64.decodeBase64(cipher2));
 		String restr=new String(res);
 		System.out.println("原文："+plainText);
 		System.out.println("加密："+cipher);
 		System.out.println("解密："+restr);
 		System.out.println();
 		
-		/*System.out.println("--------------私钥加密公钥解密过程-------------------");
-		String plainText="hello";
+		System.out.println("--------------私钥加密公钥解密过程-------------------");
+		plainText="ihep_私钥加密公钥解密";
 		//私钥加密过程
-		byte[] cipherData=RSAEncryptUtil.encrypt(RSAEncryptUtil.loadPrivateKeyByStr(RSAEncryptUtil.loadPrivateKeyByFile(filepath)),plainText.getBytes());
-		String cipher=Base64.encodeBase64String(cipherData);
+		cipherData=RSAEncrypt.encrypt(RSAEncrypt.loadPrivateKeyByStr(RSAEncrypt.loadPrivateKeyByFile(filepath)),plainText.getBytes());
+		cipher=Base64.encodeBase64String(cipherData);
 		//公钥解密过程
-		byte[] res=RSAEncryptUtil.decrypt(RSAEncryptUtil.loadPublicKeyByStr(RSAEncryptUtil.loadPublicKeyByFile(filepath)), Base64.decodeBase64(cipher));
-		String restr=new String(res);
+		res=RSAEncrypt.decrypt(RSAEncrypt.loadPublicKeyByStr(RSAEncrypt.loadPublicKeyByFile(filepath)), Base64.decodeBase64(cipher));
+		restr=new String(res);
 		System.out.println("原文："+plainText);
 		System.out.println("加密："+cipher);
 		System.out.println("解密："+restr);
-		System.out.println();*/
+		System.out.println();
 		
 		/*System.out.println("---------------私钥签名过程------------------");
 		String content="ihep_这是用于签名的原始数据";

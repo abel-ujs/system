@@ -19,4 +19,6 @@ public interface ComputerMapper {
     int updateByPrimaryKey(Computer record);
     
     List<Computer> selectAll(@Param("start") Integer start,@Param("size") Integer size);
+    
+    int total();
 }
