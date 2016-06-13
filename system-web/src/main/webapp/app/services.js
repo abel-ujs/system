@@ -1,3 +1,6 @@
+/**
+ * @author ahaha
+ */
 (function(){
 
 angular
@@ -14,14 +17,21 @@ angular
 		}}
 		return service;
 		function getAll(){
+			var that = this;
 			return $http({
 				method:'get',
 				url:'computer/getAll.do',
 				params:{
-					current:this.service.computers.current,
-					size:this.service.computers.size
+					current:this.computers.page.current,
+					size:this.computers.page.size
 				}
-			}).then(function(res){return res.data})
+			}).then(function(res){
+				if(res.data.status=='200'){
+					that.computers.page=res.data.page;
+					that.computers.result = res.data.result;
+				}
+				return res.data
+			})
 		}
 	}
 
